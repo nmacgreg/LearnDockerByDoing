@@ -1,0 +1,17 @@
+---
+
+ - name: Preamble
+   hosts: mostChapters
+   gather_facts: yes
+   remote_user: cloud_user
+   become: true
+   roles: 
+    - { role: 'base', tags: base }
+
+# Most commands here as cloud_user
+ - name: Chapter-by-chapter
+   hosts: mostChapters
+   gather_facts: yes
+   remote_user: cloud_user
+   roles: 
+    - { role: 'lab2.3', tags: lab2.3  }

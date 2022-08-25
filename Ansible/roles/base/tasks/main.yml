@@ -1,0 +1,12 @@
+---
+
+ - name: base python install
+   yum:
+    name: ['python3','python3-pip']
+    state: installed
+
+ - name: base python install
+   pip:
+    executable: /usr/bin/pip3
+    name: docker
+

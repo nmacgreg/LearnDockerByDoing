@@ -1,0 +1,7 @@
+---
+
+# "docker pull httpd:2.4"
+ - name: Pull the httpd image, version 2.4
+   docker_image: 
+     name: httpd:2.4
+     source: pull
