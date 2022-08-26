@@ -5,3 +5,11 @@
    docker_image: 
      name: httpd:2.4
      source: pull
+
+# docker run --name webtemplate -d httpd:2.4
+# https://docs.ansible.com/ansible/latest/collections/community/docker/docker_container_module.html#ansible-collections-community-docker-docker-container-module
+ - name: Create & run a container, based on httpd 2.4
+   docker_container: 
+     name: webtemplate
+     image: httpd:2.4
+     state: started
