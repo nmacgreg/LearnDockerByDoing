@@ -15,3 +15,4 @@
    remote_user: cloud_user
    roles: 
     - { role: 'lab2.3', tags: lab2.3  }
+    - { role: 'lab3.1', tags: lab3.1  }

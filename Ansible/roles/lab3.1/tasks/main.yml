@@ -1,0 +1,26 @@
+---
+
+# This relies on a specially prepared container, created within ACG's "Cloud Playground" , preloaded with images, and the widget-factory-inc code
+
+# https://docs.ansible.com/ansible/latest/collections/community/docker/docker_volume_module.html#ansible-collections-community-docker-docker-volume-module
+# "docker volume create website"
+ - name: Create a volume named "website"
+   docker_volume: 
+    name: website
+
+ - name: Copy data into the new volume
+   become: true
+   copy:
+     src: /home/cloud_user/widget-factory-inc/web/
+     dest: /var/lib/docker/volumes/website/_data/
+     remote_src: yes
+ 
+
+# docker run -d --name web1 -p 80:80 -v website:/usr/local/apache2/htdocs:ro httpd:2.4
+ - name: Run container using the new volume
+   docker_container: 
+     name: web1
+     image: httpd:2.4
+     state: started
+     ports: 80:80
+     volumes: website:/usr/local/apache2/htdocs:ro
